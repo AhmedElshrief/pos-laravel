@@ -1,0 +1,54 @@
+//
+// Component: categories List
+//
+
+.categories-list {
+  @include list-unstyled ();
+
+  > li {
+    float: left;
+    padding: 10px;
+    text-align: center;
+    width: 25%;
+
+    img {
+      @include border-radius(50%);
+      height: auto;
+      max-width: 100%;
+    }
+
+    > a:hover {
+      &,
+      .categories-list-name {
+        color: #999;
+      }
+    }
+  }
+}
+
+.categories-list-name,
+.categories-list-date {
+  display: block;
+}
+
+.categories-list-name {
+  color: $gray-700;
+  font-size: $font-size-sm;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.categories-list-date {
+  color: darken($gray-500, 20%);
+  font-size: 12px;
+}
+
+.dark-mode {
+  .categories-list-name {
+    color: $gray-400;
+  }
+  .categories-list-date {
+    color: $gray-500;
+  }
+}
