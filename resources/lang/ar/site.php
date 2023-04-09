@@ -33,8 +33,10 @@ return [
     'no_records' => 'للاسف لا يوجد اي سجلات',
 
     'clients' => 'العملاء',
+    'add_client' => 'اضافة عميل',
+    'edit_client' => 'تعديل عميل',
     'client_name' => 'اسم العميل',
-    'phone' => 'التلفون',
+    'phone' => 'التليفون',
     'address' => 'العنوان',
     'previous_orders' => 'الطلبات السابقه',
     'orders' => 'الإستعارات',

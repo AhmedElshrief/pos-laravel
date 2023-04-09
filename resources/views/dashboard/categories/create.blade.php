@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
 
-@section('title', __('site.add_user'))
+@section('title', __('site.add_category'))
 
 @section('content')
 

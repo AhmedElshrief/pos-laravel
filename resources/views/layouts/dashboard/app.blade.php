@@ -283,7 +283,7 @@
         // // image preview
 
 
-    });
+    }); // end of ready document
 
     CKEDITOR.config.language = "{{ app()->getLocale() }}";
 
@@ -292,7 +292,6 @@
 </script>
 
 
-});//end of ready
 
 
 {{--@stack('scripts')--}}
