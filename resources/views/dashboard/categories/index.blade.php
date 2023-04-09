@@ -60,6 +60,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>@lang('site.category')</th>
+                                <th>@lang('site.num_products')</th>
+{{--                                <th>@lang('site.related_products')</th>--}}
                                 <th colspan="2">@lang('site.action')</th>
                             </tr>
                             </thead>
@@ -70,10 +72,14 @@
                                 <tr>
                                     <td>{{ $index+1 }}</td>
                                     <td>{{ $category->name }}</td>
+                                    <td>{{ $category->products->count() }}</td>
+                                    <td>
+                                        <a href="{{ route('dashboard.products.index', ['category_id' => $category->id]) }}" class="btn btn-info"><i class="fa fa-list"></i>{{ __('site.related_products') }}</a>
+                                    </td>
                                     <td>
 
                                         @if(auth()->user()->hasPermission('update_categories'))
-                                            <a href="{{route('dashboard.categories.edit', $category->id)}}" class="btn btn-info"><span></span>@lang('site.edit')</a>
+                                            <a href="{{route('dashboard.categories.edit', $category->id)}}" class="btn btn-bitbucket"><i class="fa fa-edit"></i>@lang('site.edit')</a>
                                         @else
                                             <button class="btn btn-info disabled"><i class="fa fa-edit"></i>@lang('site.update')</button>
                                         @endif
@@ -91,6 +97,7 @@
                                             <button class="btn btn-danger disabled"> <i class="fa fa-trash"></i>@lang('site.delete')</button>
                                         @endif
                                     </td>
+
                                 </tr>
 
                             @endforeach

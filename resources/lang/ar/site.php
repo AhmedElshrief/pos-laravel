@@ -59,61 +59,49 @@ return [
     'all_categories' => 'كل الاقسام',
     'name' => 'الاسم',
     'description' => 'الوصف',
+
     'products_count' => 'عدد الامنتجات',
     'related_products' => 'المنتجات المرتبطه',
     'category' => 'القسم',
     'show_products' => 'عرض المنتجات',
+    'add_product' => 'اضافة منتج',
     'created_at' => 'تم اضافته',
     'add_category'=> 'إضافة قسم',
     'edit_category' => 'تعديل بيانات القسم',
-    'num_categories' => 'عدد الكتب',
+    'num_categories' => 'عدد الأقسام',
     'related_books'=>'الكتب المرتبطه بالقسم',
 
     'products' => 'المنتجات',
+    'num_products' => 'عدد المنتجات',
 
-    'browers' => 'المستعيرين',
-    'brower' => 'المستعير',
-    'add_brower' => 'إضافة مستعير',
-    'edit_brower' => 'تعديل مستعير',
-    'mobile' => 'رقم التليفون',
-    'notes' => 'ملاحظات',
     'product' => 'المنتج',
+    'edit_product' => 'تعديل منتج',
     'quantity' => 'الكميه',
     'total' => 'المجموع',
-    'purchase_price' => 'سعر الشراء',
+    'buy_price' => 'سعر الشراء',
     'price' => 'السعر',
     'sale_price' => 'سعر البيع',
     'stock' => 'المخزن',
     'profit_percent' => 'المكسب',
 
-    'books' => 'الكتب',
-    'num_pages' => 'عدد الصفحات',
-    'num_copies' => 'عدد النسخ',
-    'num_edition' => 'رقم الطابعه',
-    'date_edition' => 'تاريخ الطابعه',
-    'publisher' => 'دار النشر',
-    'author' => 'المؤلف',
-    'book_name' => 'اسم الكتاب',
-    'status' => 'الحاله',
-
-
-    'add_book' => 'إضافة كتاب',
-    'edit_book' => 'تعديل كتاب',
-
 
     'ar' => [
         'name' => 'الاسم بالغه العربيه',
         'description' => 'الوصف بالغه العربيه',
+
+        'product_name' => 'اسم المنتج باللغه العربيه',
     ],
 
     'en' => [
         'name' => 'الاسم بالغه الانجليزيه',
         'description' => 'الوصف بالغه الانجليزيه',
+
+        'product_name' => 'اسم المنتج باللغه الانجليزيه',
     ],
 
     'new_user_register' => 'تسجيل كعضو جديد',
 
-    'chosing' => '( اختياري )',
+    'choosing' => '( اختياري )',
     'nothing' => 'لا يوجد',
 
 
