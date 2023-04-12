@@ -11,4 +11,14 @@ class Client extends Model
         'phone' => 'array'
     ];
 
+    public function getNameAttribute($name)
+    {
+        return ucfirst($name);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }

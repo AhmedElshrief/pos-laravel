@@ -99,7 +99,7 @@
 
                         <div class="form-group">
                             <label>@lang('site.buy_price')</label>
-                            <input type="number" name="buy_price" class="form-control" value="{{ old('buy_price') }}">
+                            <input type="number" name="buy_price" step="0.01" class="form-control" value="{{ old('buy_price') }}">
                             @if ($errors->has('buy_price'))
                                 <span class="text-danger">{{ $errors->first('buy_price') }}</span>
                             @endif
@@ -107,7 +107,7 @@
 
                         <div class="form-group">
                             <label>@lang('site.sale_price')</label>
-                            <input type="number" name="sale_price" class="form-control" value="{{ old('sale_price') }}">
+                            <input type="number" name="sale_price" step="0.01" class="form-control" value="{{ old('sale_price') }}">
                             @if ($errors->has('sale_price'))
                                 <span class="text-danger">{{ $errors->first('sale_price') }}</span>
                             @endif

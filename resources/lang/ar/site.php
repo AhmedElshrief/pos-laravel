@@ -39,10 +39,10 @@ return [
     'phone' => 'التليفون',
     'address' => 'العنوان',
     'previous_orders' => 'الطلبات السابقه',
-    'orders' => 'الإستعارات',
-    'add_order' => 'اضف استعاره',
-    'edit_order' => 'تعديل استعاره',
-    'order_book' => 'إعارة كتاب',
+    'orders' => 'الطلبات',
+    'add_order' => 'اضف طلب',
+    'edit_order' => 'تعديل طلب',
+    'restore_order' => 'ارتجاع طلب',
 
     'users' => 'المستخدمين',
     'first_name' => 'الاسم الاول',
@@ -71,7 +71,6 @@ return [
     'add_category'=> 'إضافة قسم',
     'edit_category' => 'تعديل بيانات القسم',
     'num_categories' => 'عدد الأقسام',
-    'related_books'=>'الكتب المرتبطه بالقسم',
 
     'products' => 'المنتجات',
     'num_products' => 'عدد المنتجات',

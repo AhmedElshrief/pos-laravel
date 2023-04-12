@@ -40,7 +40,7 @@ class ProductController extends Controller
         $data = $request->validate([
             'ar.name' => 'required',
             'ar.description' => 'required',
-            'en.name' => 'required|unique',
+            'en.name' => 'required',
             'en.description' => 'required',
             'category_id' => 'required',
             'images' => 'image',

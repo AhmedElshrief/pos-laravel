@@ -95,7 +95,7 @@
                             <div class="nav-tabs-custom">
 
                                 @php
-                                    $models = ['users', 'categories', 'products'];
+                                    $models = ['users', 'categories', 'products', 'clients', 'orders'];
                                     $trans = ['read', 'create', 'update', 'delete'];
                                 @endphp
                                 <ul class="nav nav-tabs">

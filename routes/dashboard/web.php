@@ -10,7 +10,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
         Route::get('/', [DashboardController::class, 'index'])->name('index');
 
-        // categories routes
+        // users routes
         Route::resource('users', 'UserController')->except(['show']);
 
         // category routes
@@ -21,7 +21,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
         // client routes
         Route::resource('clients', 'ClientController')->except(['show']);
+        Route::resource('clients.orders', 'Client\OrderController')->except(['show']);
 
+        // orders
+        Route::resource('orders', 'OrderController');
+        Route::get('orders/{order}/products', 'OrderController@products')->name('orders.products');
+        Route::delete('orders/{order}/restore', 'OrderController@restore')->name('orders.restore');
 
     }); //end of dashboard
 

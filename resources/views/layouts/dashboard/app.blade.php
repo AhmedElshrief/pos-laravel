@@ -266,7 +266,7 @@
 <script src="{{ asset('dashboard_files/plugins/ckeditor/ckeditor.js') }}"></script>
 
 {{--custom js--}}
-<script src="{{ asset('dashboard_files/js/custom/order.js') }}"></script>
+<script src="{{ asset('js/order.js') }}"></script>
 <script src="{{ asset('js/my.js') }}"></script>
 
 <script>

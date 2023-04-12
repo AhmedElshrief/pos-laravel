@@ -13,8 +13,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(LaratrustSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
+        $this->call(ClientsTableSeeder::class);
 
-        for ($i = 1; $i <= 10; $i++)
+        for ($i = 1; $i <= 4
+        ; $i++)
         {
             $user = \App\User::create([
                 'first_name' => 'test ' . $i,
