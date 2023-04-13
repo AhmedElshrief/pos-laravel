@@ -257,7 +257,8 @@
 <script src="{{ asset('dashboard_files/js/printThis.js') }}"></script>
 
 {{--morris --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>--}}
+<script src="{{ asset('dashboard_files/plugins/morris/raphael-min.js') }}"></script>
 <script src="{{ asset('dashboard_files/plugins/morris/morris.min.js') }}"></script>
 
 {{-- CKeditor--}}
@@ -294,6 +295,6 @@
 
 
 
-{{--@stack('scripts')--}}
+@stack('scripts')
 </body>
 </html>
