@@ -38,14 +38,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'ar.name' => 'required',
+            'ar.name' => 'required|unique:product_translations',
             'ar.description' => 'required',
-            'en.name' => 'required',
+            'en.name' => 'required|unique:product_translations',
             'en.description' => 'required',
             'category_id' => 'required',
             'images' => 'image',
-            'buy_price' => 'required',
-            'sale_price' => 'required',
+            'buy_price' => 'required|numeric|min:0',
+            'sale_price' => 'required|numeric|min:0',
             'stock' => 'required',
 
         ]);
@@ -78,18 +78,18 @@ class ProductController extends Controller
         $data = $request->validate([
             'ar.name' => [
                 'required',
-                Rule::unique('products_translations', 'name')->ignore($product->id, 'product_id')
+                Rule::unique('product_translations', 'name')->ignore($product->id, 'product_id')
             ],
             'en.name' => [
                 'required',
-                Rule::unique('products_translations', 'name')->ignore($product->id, 'product_id')
+                Rule::unique('product_translations', 'name')->ignore($product->id, 'product_id')
             ],
             'ar.description' => 'required',
             'en.description' => 'required',
             'category_id' => 'required',
             'images' => 'image',
-            'buy_price' => 'required',
-            'sale_price' => 'required',
+            'buy_price' => 'required|numeric|min:0',
+            'sale_price' => 'required|numeric|min:0',
             'stock' => 'required',
 
         ]);
@@ -99,9 +99,7 @@ class ProductController extends Controller
         if (request()->image) {
 
             if ($product->image != 'default.png') {
-
                 Storage::disk('public_uploads')->delete('/products_images/' . $product->image);
-
             }
 
             if ($request->image) {
