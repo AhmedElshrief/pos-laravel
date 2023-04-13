@@ -41,6 +41,7 @@ return [
     'previous_orders' => 'الطلبات السابقه',
     'orders' => 'الطلبات',
     'add_order' => 'اضف طلب',
+    'add_order_to' => 'اضف طلب الي العميل ',
     'edit_order' => 'تعديل طلب',
     'restore_order' => 'ارتجاع طلب',
 

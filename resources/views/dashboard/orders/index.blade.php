@@ -152,7 +152,6 @@
 
                             <div id="order-product-list">
 
-{{--                                @include('dashboard.orders._products')--}}
 
                             </div><!-- end of order product list -->
 

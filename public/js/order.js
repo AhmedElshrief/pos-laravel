@@ -26,14 +26,14 @@ $(document).ready(function () {
     });
 
     // //disabled btn
-    $('body').on('click', '.disabled', function(e) {
+    $('body').on('click', '.disabled', function (e) {
 
         e.preventDefault();
 
     });//end of disabled
 
     //remove product btn
-    $('body').on('click', '.remove-product-btn', function(e) {
+    $('body').on('click', '.remove-product-btn', function (e) {
 
         e.preventDefault();
         let id = $(this).data('id');
@@ -47,7 +47,7 @@ $(document).ready(function () {
 
 
     //change product quantity listen
-    $('body').on('keyup change', '.product-quantity', function() {
+    $('body').on('keyup change', '.product-quantity', function () {
 
         let quantity = Number($(this).val()); //2
         let unitPrice = parseFloat($(this).data('price').replace(/,/g, '')); //150
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
 
     //list all order products
-    $('.order-products').on('click', function(e) {
+    $('.order-products').on('click', function (e) {
 
         e.preventDefault();
 
@@ -69,7 +69,7 @@ $(document).ready(function () {
         $.ajax({
             url: url,
             method: method,
-            success: function(data) {
+            success: function (data) {
 
                 $('#loading').css('display', 'none');
                 $('#order-product-list').empty();
@@ -80,9 +80,12 @@ $(document).ready(function () {
 
     });//end of order products click
 
-    //print order
-    $(document).on('click', '.print-btn', function() {
+
+    // print order
+    $(document).on('click', '.print-btn', function () {
+
         $('#print-area').printThis();
+
     });//end of click function
 
 });//end of document ready
@@ -91,7 +94,7 @@ $(document).ready(function () {
 function calculateTotal() {
     let price = 0;
 
-    $('.order-list .product-price').each(function(index) {
+    $('.order-list .product-price').each(function (index) {
 
         price += parseFloat($(this).html().replace(/,/g, ''));
 

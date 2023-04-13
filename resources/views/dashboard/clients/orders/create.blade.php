@@ -6,10 +6,11 @@
 
         <section class="content-header">
 
-            <h1>@lang('site.add_order')</h1>
+            <h1>@lang('site.add_order_to') {{ $client->name }}</h1>
 
             <ol class="breadcrumb">
-                <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
+                <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a>
+                </li>
                 <li><a href="{{ route('dashboard.clients.index') }}">@lang('site.clients')</a></li>
                 <li class="active">@lang('site.add_order')</li>
             </ol>
@@ -39,11 +40,13 @@
 
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" href="#{{ str_replace(' ', '-', $category->name) }}">{{ $category->name }}</a>
+                                                <a data-toggle="collapse"
+                                                   href="#{{ str_replace(' ', '-', $category->name) }}">{{ $category->name }}</a>
                                             </h4>
                                         </div>
 
-                                        <div id="{{ str_replace(' ', '-', $category->name) }}" class="panel-collapse collapse">
+                                        <div id="{{ str_replace(' ', '-', $category->name) }}"
+                                             class="panel-collapse collapse">
 
                                             <div class="panel-body">
 
@@ -133,7 +136,8 @@
 
                                 <h4>@lang('site.total') : <span class="total-price">0</span></h4>
 
-                                <button class="btn btn-primary btn-block disabled" id="add-order-form-btn"><i class="fa fa-plus"></i> @lang('site.add_order')</button>
+                                <button class="btn btn-primary btn-block disabled" id="add-order-form-btn"><i
+                                        class="fa fa-plus"></i> @lang('site.add_order')</button>
 
                             </form>
 
@@ -141,59 +145,104 @@
 
                     </div><!-- end of box -->
 
-{{--                    @if ($client->orders->count() > 0)--}}
 
-{{--                        <div class="box box-primary">--}}
+                    {{-- Orders history of client --}}
+                    @if ($client->orders->count() > 0)
 
-{{--                            <div class="box-header">--}}
+                        <div class="box box-primary">
 
-{{--                                <h3 class="box-title" style="margin-bottom: 10px">@lang('site.previous_orders')--}}
-{{--                                    <small>{{ $orders->total() }}</small>--}}
-{{--                                </h3>--}}
+                            <div class="box-header">
 
-{{--                            </div><!-- end of box header -->--}}
+                                <h3 class="box-title" style="margin-bottom: 10px">@lang('site.previous_orders')
+                                    <small class="badge">{{ $orders->total() }}</small>
+                                </h3>
 
-{{--                            <div class="box-body">--}}
+                            </div><!-- end of box header -->
 
-{{--                                @foreach ($orders as $order)--}}
+                            <div class="box-body">
 
-{{--                                    <div class="panel-group">--}}
+                                @foreach ($orders as $order)
 
-{{--                                        <div class="panel panel-success">--}}
+                                    <div class="panel-group">
 
-{{--                                            <div class="panel-heading">--}}
-{{--                                                <h4 class="panel-title">--}}
-{{--                                                    <a data-toggle="collapse" href="#{{ $order->created_at->format('d-m-Y-s') }}">{{ $order->created_at->toFormattedDateString() }}</a>--}}
-{{--                                                </h4>--}}
-{{--                                            </div>--}}
+                                        <div class="panel panel-success">
 
-{{--                                            <div id="{{ $order->created_at->format('d-m-Y-s') }}" class="panel-collapse collapse">--}}
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse"
+                                                       href="#{{ $order->created_at->format('d-m-Y-s') }}">{{ $order->created_at->toFormattedDateString() }}</a>
+                                                </h4>
+                                            </div>
 
-{{--                                                <div class="panel-body">--}}
+                                            <div id="{{ $order->created_at->format('d-m-Y-s') }}"
+                                                 class="panel-collapse collapse">
 
-{{--                                                    <ul class="list-group">--}}
-{{--                                                        @foreach ($order->products as $product)--}}
-{{--                                                            <li class="list-group-item">{{ $product->name }}</li>--}}
-{{--                                                        @endforeach--}}
-{{--                                                    </ul>--}}
+                                                <div class="panel-body">
 
-{{--                                                </div><!-- end of panel body -->--}}
+                                                    <table class="table table-hover">
+                                                        <tr>
+                                                            <th>@lang('site.product')</th>
+                                                            <th>@lang('site.price')</th>
+                                                            <th>@lang('site.quantity')</th>
+                                                            <th>@lang('site.price')</th>
+                                                        </tr>
+                                                        @foreach ($order->products as $product)
+                                                            <tr>
+                                                                <td>{{ $product->name }}</td>
+                                                                <td>{{ $product->sale_price }}</td>
+                                                                <td>{{ $product->pivot->quantity }}</td>
+                                                                <td>{{ number_format($product->pivot->quantity * $product->sale_price, 2) }}</td>
 
-{{--                                            </div><!-- end of panel collapse -->--}}
+                                                            </tr>
 
-{{--                                        </div><!-- end of panel primary -->--}}
+                                                        @endforeach
+                                                    </table>
+                                                    <h4>@lang('site.total') <span>{{ number_format($order->total_price, 2) }}</span></h4>
+                                                   {{-- actions (edit - delete - restore) --}}
+                                                    <div>
+                                                        @if (auth()->user()->hasPermission('update_orders'))
+                                                            <a href="{{ route('dashboard.clients.orders.edit', ['client' => $order->client->id, 'order' => $order->id]) }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> @lang('site.edit')</a>
+                                                        @else
+                                                            <a href="#" disabled class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> @lang('site.edit')</a>
+                                                        @endif
 
-{{--                                    </div><!-- end of panel group -->--}}
+                                                        @if (auth()->user()->hasPermission('delete_orders'))
+                                                            <form action="{{ route('dashboard.orders.destroy', $order->id) }}" method="post" style="display: inline-block;">
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('delete') }}
+                                                                <button type="submit" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i> @lang('site.delete')</button>
+                                                            </form>
 
-{{--                                @endforeach--}}
+                                                        @else
+                                                            <a href="#" class="btn btn-danger btn-sm" disabled><i class="fa fa-trash"></i> @lang('site.delete')</a>
+                                                        @endif
 
-{{--                                {{ $orders->links() }}--}}
+                                                        {{-- restore --}}
+                                                        <form action="{{ route('dashboard.orders.restore', $order->id) }}" method="post" style="display: inline-block;">
+                                                            {{ csrf_field() }}
+                                                            {{ method_field('delete') }}
+                                                            <button type="submit" class="btn btn-adn btn-sm delete"><i class="fa fa-warning"></i>@lang('site.restore_order')</button>
+                                                        </form>
 
-{{--                            </div><!-- end of box body -->--}}
+                                                    </div> {{-- end div of actions --}}
 
-{{--                        </div><!-- end of box -->--}}
+                                                </div><!-- end of panel body -->
 
-{{--                    @endif--}}
+                                            </div><!-- end of panel collapse -->
+
+                                        </div><!-- end of panel primary -->
+
+                                    </div><!-- end of panel group -->
+
+                                @endforeach
+
+                                {{ $orders->links() }}
+
+                            </div><!-- end of box body -->
+
+                        </div><!-- end of box -->
+
+                    @endif
 
                 </div><!-- end of col -->
 
