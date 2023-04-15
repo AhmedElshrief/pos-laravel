@@ -15,7 +15,8 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'categories',
+//        'guard' => 'api',
+        'passwords' => 'users',
     ],
 
     /*
@@ -28,7 +29,7 @@ return [
     | here which uses session storage and the Eloquent user provider.
     |
     | All authentication drivers have a user provider. This defines how the
-    | categories are actually retrieved out of your database or other storage
+    | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
     | Supported: "session", "token"
@@ -38,12 +39,17 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'categories',
+            'provider' => 'users',
         ],
 
+//        'api' => [
+//            'driver' => 'token',
+//            'provider' => 'users',
+//            'hash' => false,
+//        ],
         'api' => [
-            'driver' => 'token',
-            'provider' => 'categories',
+            'driver' => 'jwt',
+            'provider' => 'users',
             'hash' => false,
         ],
     ],
@@ -54,7 +60,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | All authentication drivers have a user provider. This defines how the
-    | categories are actually retrieved out of your database or other storage
+    | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
     | If you have multiple user tables or models you may configure multiple
@@ -66,14 +72,14 @@ return [
     */
 
     'providers' => [
-        'categories' => [
+        'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
 
-        // 'categories' => [
+        // 'users' => [
         //     'driver' => 'database',
-        //     'table' => 'categories',
+        //     'table' => 'users',
         // ],
     ],
 
@@ -93,8 +99,8 @@ return [
     */
 
     'passwords' => [
-        'categories' => [
-            'provider' => 'categories',
+        'users' => [
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
         ],
